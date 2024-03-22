@@ -1,0 +1,348 @@
+﻿Test Program: 1.0.0.0
+****************************** Loop: 1  ******************************
+****************************** [1]TestItem: RSRP@-T:10/-W:1  ******************************
+****************************** 2024/1/12 下午 02:48:05 *****************************************
+****************************** Loop RSRP *****************************************
+cmd: adb -s NoADB shell Query Connection Status
+Loop: 10 , Wait: 1s
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+atAT+CESQDBM
+
+NO CARRIER
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.5
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+atAT+CESQDBM
+
+NO CARRIER
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.5
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=12.554 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 12.554/12.554/12.554 ms
+[01/12 14:48:11]	TX Power: 0	Ping Latency: 12.554	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
++CGPADDR: 1,10.205.164.5
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
++CGPADDR: 1,10.205.164.5
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=15.890 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 15.890/15.890/15.890 ms
+[01/12 14:48:17]	TX Power: 0	Ping Latency: 15.89	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :13 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 32 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 32 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 32 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -89 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -75 dBm,ecio: -10 dB, rsrp: -85 dBm,phase: 0 degree,sinr: 28 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :13 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 32 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 32 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 32 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -89 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -75 dBm,ecio: -10 dB, rsrp: -85 dBm,phase: 0 degree,sinr: 28 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=11.781 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 11.781/11.781/11.781 ms
+[01/12 14:48:25]	TX Power: 13	Ping Latency: 11.781	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+at+bnrinfo
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=28.117 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 28.117/28.117/28.117 ms
+[01/12 14:48:31]	TX Power: 13	Ping Latency: 28.117	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :12 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -89 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -87 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :12 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -89 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -87 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=13.696 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 13.696/13.696/13.696 ms
+[01/12 14:48:38]	TX Power: 12	Ping Latency: 13.696	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :13 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -72 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 32 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 30 dB
+RX3 power: -77 dBm,ecio: -10 dB, rsrp: -88 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :13 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -72 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 32 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 30 dB
+RX3 power: -77 dBm,ecio: -10 dB, rsrp: -88 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=17.368 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 17.368/17.368/17.368 ms
+[01/12 14:48:45]	TX Power: 13	Ping Latency: 17.368	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :11 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 32 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -89 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -86 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :11 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 32 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -89 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -86 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=15.643 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 15.643/15.643/15.643 ms
+[01/12 14:48:52]	TX Power: 11	Ping Latency: 15.643	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :11 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 30 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -86 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :11 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 30 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -86 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=14.086 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 14.086/14.086/14.086 ms
+[01/12 14:48:59]	TX Power: 11	Ping Latency: 14.086	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :11 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 30 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -86 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :11 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -68 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 30 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -86 dBm,phase: 0 degree,sinr: 27 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=19.780 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 19.780/19.780/19.780 ms
+[01/12 14:49:07]	TX Power: 11	Ping Latency: 19.78	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :12 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -69 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -87 dBm,phase: 0 degree,sinr: 28 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+at+bnrinfo
+
+NR BAND:79, EARFCN:720288 DL_bandwidth:100MHz
+physical cell ID:1, averaged PUSCH TX power :12 dBm, averaged PUCCH TX power :-255 dBm,
+RX Power Info:
+RSRQ -11 dB, RSRP -80 dBm,SINR 33 dB
+RX0 power: -69 dBm,ecio: -10 dB, rsrp: -79 dBm, phase: 0 degree, sinr: 33 dB
+RX1 power: -71 dBm,ecio: -10 dB, rsrp: -82 dBm, phase: 0 degree, sinr: 31 dB
+RX2 power: -78 dBm,ecio: -10 dB, rsrp: -88 dBm, phase: 0 degree, sinr: 29 dB
+RX3 power: -76 dBm,ecio: -10 dB, rsrp: -87 dBm,phase: 0 degree,sinr: 28 dB
+NR CQI 255,RANK 255
+Serving Beam SSB index 0,FR2 serving Beam:255,255
+
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=61.046 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 61.046/61.046/61.046 ms
+[01/12 14:49:14]	TX Power: 12	Ping Latency: 61.046

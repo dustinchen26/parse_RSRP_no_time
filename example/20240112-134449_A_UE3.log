@@ -1,0 +1,303 @@
+﻿Test Program: 1.0.0.0
+****************************** Loop: 1  ******************************
+****************************** [1]TestItem: RSRP@-T:10/-W:1  ******************************
+****************************** 2024/1/12 下午 01:43:36 *****************************************
+****************************** Loop RSRP *****************************************
+cmd: adb -s NoADB shell Query Connection Status
+Loop: 10 , Wait: 1s
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+at+bnrinfo
+ATI
+AT+COPS?
+
++COPS: 0,0,"466 66",11
+
+OK
+AT+CGSN
+
+359047100262714
+
+OK
+
++CPIN: READY
+
+OK
+
+466660000055171
+
+OK
+at+bnrinfo
+ATI
+AT+COPS?
+
++COPS: 0,0,"466 66",11
+
+OK
+AT+CGSN
+
+359047100262714
+
+OK
+
++CPIN: READY
+
+OK
+
+466660000055171
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=14.342 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 14.342/14.342/14.342 ms
+[01/12 13:43:42]	TX Power: 0	Ping Latency: 14.342	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=11.228 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 11.228/11.228/11.228 ms
+[01/12 13:43:49]	TX Power: 0	Ping Latency: 11.228	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=15.644 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 15.644/15.644/15.644 ms
+[01/12 13:43:56]	TX Power: 0	Ping Latency: 15.644	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=11.885 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 11.885/11.885/11.885 ms
+[01/12 13:44:02]	TX Power: 0	Ping Latency: 11.885	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=15.366 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 15.366/15.366/15.366 ms
+[01/12 13:44:09]	TX Power: 0	Ping Latency: 15.366	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=11.013 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 11.013/11.013/11.013 ms
+[01/12 13:44:16]	TX Power: 0	Ping Latency: 11.013	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=13.241 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 13.241/13.241/13.241 ms
+[01/12 13:44:22]	TX Power: 0	Ping Latency: 13.241	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=15.372 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 15.372/15.372/15.372 ms
+[01/12 13:44:29]	TX Power: 0	Ping Latency: 15.372	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+AT+CGPADDR
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=13.880 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 13.880/13.880/13.880 ms
+[01/12 13:44:35]	TX Power: 0	Ping Latency: 13.88	
+[SSH]cmd:echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1
+
+<LTE PCC INFO>:<INVALID>
+
+OK
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+<LTE PCC INFO>:<INVALID>
+
+OK
+
++CGPADDR: 1,10.205.164.11
++CGPADDR: 38,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
++CGPADDR: 39,0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+
+OK
+[SSH]cmd:ping 10.205.102.16 -c 1
+PING 10.205.102.16 (10.205.102.16): 56 data bytes
+64 bytes from 10.205.102.16: seq=0 ttl=64 time=13.906 ms
+
+--- 10.205.102.16 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 13.906/13.906/13.906 ms
+[01/12 13:44:42]	TX Power: 0	Ping Latency: 13.906

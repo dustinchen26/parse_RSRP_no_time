@@ -1,0 +1,144 @@
+<!-- 
+  Copyright © [2023] [Dustin_Chen]. All rights reserved.
+  Author: Dustin_Chen
+  Email:  Dustin_Chen@compal.com or chuhpsdustin@gmail.com
+  
+  How to use: enter CPE, and use command to generate "output.txt". Paste the "output.txt" below, and push "Parse and Export to Excel"
+  【How to use】
+    0. Set the UE time correctly. ex: date -s "2024-03-12 10:22:10"
+    1. MobaXterm Session -> SSH -> Termnial settings -> Select "Log terminal output to": _DesktopDir_
+	2. ssh into CPE. ex: 10.205.164.10
+	3. use below command to read at+bnrinfo: 
+	   【CPE】read every 60 sec, until 3600 sec
+	   start_time=$(date +%s); while [ $(( $(date +%s) - start_time )) -lt 3600 ]; do echo -ne "$(date) - "; echo -ne "at+bnrinfo\r\n" | microcom -t 1000 /dev/ttyUSB1 | grep -E "dBm|bnrinfo"; sleep 60; done
+	   【Mifi】10 times
+	   for i in $(seq 1 10); do echo "$(date) - at+bnrinfo"; atcli at+bnrinfo; done
+	4. paste the _DesktopDir_ output file content below to parse
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parse_RSRP_SINR_PUSCH-power</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.2;
+      font-size: 14px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: auto;
+      margin: 15px;
+    }
+
+    th,
+    td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 6px;
+    }
+
+    .red {
+      color: red;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script>
+    function parseLog() {
+      var inputText = document.getElementById('logInput').value;
+
+      // Regular expressions to extract required information
+      var regex =
+      /physical cell ID:(\d+), averaged PUSCH TX power :(-?\d+) dBm[\s\S]*?RSRQ (-?\d+) dB, RSRP (-?\d+) dBm,SINR (\d+) dB[\s\S]*?RX0 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX1 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX2 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX3 power:.*?rsrp: (-?\d+) dBm/g;
+
+      // Match regular expressions against input text
+      var matches = inputText.matchAll(regex);
+
+      // Display the results in the output div
+      var outputTable = document.getElementById('output');
+      outputTable.innerHTML = ''; // Clear existing content
+
+      // Create table header
+      var headerRow = outputTable.insertRow(0);
+      headerRow.innerHTML =
+        '<th>Cell ID</th><th>PUSCH TX power</th><th>RSRQ</th><th>RSRP</th><th>SINR</th><th>RX0_rsrp</th><th>RX1_rsrp</th><th>RX2_rsrp</th><th>RX3_rsrp</th>';
+
+      var rowNum = 1;
+      var data = [ // Initialize array with headers for Excel export
+        ['Cell ID', 'PUSCH TX power', 'RSRQ', 'RSRP', 'SINR', 'RX0_rsrp', 'RX1_rsrp', 'RX2_rsrp', 'RX3_rsrp']
+      ];
+
+      for (const match of matches) {
+        // Check if each value is defined before displaying
+        if (match && match.length === 10) {
+          // Insert a new row
+          var newRow = outputTable.insertRow(rowNum);
+
+          // Insert cells into the new row
+          newRow.insertCell(0).textContent = match[1] ? match[1] : 'N/A';
+          newRow.insertCell(1).textContent = match[2] ? match[2] + ' dBm' : 'N/A';
+          newRow.insertCell(2).textContent = match[3] ? match[3] + ' dB' : 'N/A';
+          newRow.insertCell(3).textContent = match[4] ? match[4] + ' dBm' : 'N/A';
+          newRow.insertCell(4).textContent = match[5] ? match[5] + ' dB' : 'N/A';
+          newRow.insertCell(5).textContent = match[6] ? match[6] + ' dBm' : 'N/A';
+          newRow.insertCell(6).textContent = match[7] ? match[7] + ' dBm' : 'N/A';
+          newRow.insertCell(7).textContent = match[8] ? match[8] + ' dBm' : 'N/A';
+          newRow.insertCell(8).textContent = match[9] ? match[9] + ' dBm' : 'N/A';
+
+          rowNum++;
+
+          // Push row data to the array for Excel export
+          data.push([match[1], match[2] + ' dBm', match[3] + ' dB', match[4] + ' dBm', match[5] + ' dB', match[6] +
+            ' dBm', match[7] + ' dBm', match[8] + ' dBm', match[9] + ' dBm'
+          ]);
+        }
+
+        // Display debug information in console
+        console.log('Debug: ', match);
+      }
+
+      // Export data to Excel immediately after parsing
+      exportToExcel(data);
+    }
+
+    function exportToExcel(data) {
+      /* Create a workbook and add a worksheet */
+      var wb = XLSX.utils.book_new();
+      var ws = XLSX.utils.aoa_to_sheet(data);
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+      /* Save to file */
+      XLSX.writeFile(wb, 'log_data.xlsx');
+    }
+  </script>
+</head>
+
+<body>
+  <h2>Parse_RSRP_SINR_PUSCH-power</h2>
+  <p style="margin: 0;">Author: Dustin_Chen, email: <a href="mailto:Dustin_Chen@compal.com"
+      style="line-height: 1;">Dustin_Chen@compal.com</a> or <a href="mailto:chuhpsdustin@gmail.com"
+      style="line-height: 1;">chuhpsdustin@gmail.com</a></p>
+  <ul>
+    <li><strong>【How to use】</strong>
+      <ul>
+	  	<li>Please post the files generated by the 5 great tools below (for example: 20240112-134449_A_UE1.log)</li>
+        <textarea id="logInput" rows="10" cols="80"></textarea>
+        <br>
+        <button onclick="parseLog()">Parse and Export to Excel</button>
+        <table id="output"></table>
+        <div id="debug"></div>
+      </ul>
+    </li>
+
+  </ul>
+
+</body>
+
+</html>
+
