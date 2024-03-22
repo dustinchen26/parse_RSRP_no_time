@@ -54,19 +54,18 @@
       var inputText = document.getElementById('logInput').value;
 
       // Regular expressions to extract required information
-      var timeRegex = /[*-]+\s+(\d{4}\/\d{1,2}\/\d{1,2}\s(?:上午|下午)\s\d{1,2}:\d{2}:\d{2})/;
-        var dataRegex = /physical cell ID:(\d+), averaged PUSCH TX power :(-?\d+) dBm[\s\S]*?RSRQ (-?\d+) dB, RSRP (-?\d+) dBm,SINR (\d+) dB[\s\S]*?RX0 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX1 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX2 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX3 power:.*?rsrp: (-?\d+) dBm/g;
+      var logRegex =
+        /[*-]+\s+(\d{4}\/\d{1,2}\/\d{1,2}\s(?:上午|下午)\s\d{1,2}:\d{2}:\d{2})[\s\S]*?(?=(?:[*-]+\s+\d{4}\/\d{1,2}\/\d{1,2}\s(?:上午|下午)\s\d{1,2}:\d{2}:\d{2})|$)/g;
+      var dataRegex =
+        /physical cell ID:(\d+), averaged PUSCH TX power :(-?\d+) dBm[\s\S]*?RSRQ (-?\d+) dB, RSRP (-?\d+) dBm,SINR (\d+) dB[\s\S]*?RX0 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX1 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX2 power:.*?rsrp: (-?\d+) dBm[\s\S]*?RX3 power:.*?rsrp: (-?\d+) dBm/g;
 
       // Match regular expressions against input text
-        var timeMatch = timeRegex.exec(inputText);
-        var dataMatches = inputText.matchAll(dataRegex);
+      var logMatches = inputText.matchAll(logRegex);
 
-      console.log('Time Match:', timeMatch);
-
-        // Get the first matched time
-      var startTime = timeMatch ? timeMatch[1] : 'N/A';
-
-      console.log('Start Time:', startTime);
+      // Initialize array with headers for Excel export
+      var data = [
+        ['Time', 'Cell ID', 'PUSCH TX power', 'RSRQ', 'RSRP', 'SINR', 'RX0_rsrp', 'RX1_rsrp', 'RX2_rsrp', 'RX3_rsrp']
+      ];
 
       // Display the results in the output div
       var outputTable = document.getElementById('output');
@@ -75,40 +74,53 @@
       // Create table header
       var headerRow = outputTable.insertRow(0);
       headerRow.innerHTML =
-            '<th>Time</th><th>Cell ID</th><th>PUSCH TX power</th><th>RSRQ</th><th>RSRP</th><th>SINR</th><th>RX0_rsrp</th><th>RX1_rsrp</th><th>RX2_rsrp</th><th>RX3_rsrp</th>';
+        '<th>Time</th><th>Cell ID</th><th>PUSCH TX power</th><th>RSRQ</th><th>RSRP</th><th>SINR</th><th>RX0_rsrp</th><th>RX1_rsrp</th><th>RX2_rsrp</th><th>RX3_rsrp</th>';
 
       var rowNum = 1;
-        var data = [
-            // Initialize array with headers for Excel export
-            ['Time', 'Cell ID', 'PUSCH TX power', 'RSRQ', 'RSRP', 'SINR', 'RX0_rsrp', 'RX1_rsrp', 'RX2_rsrp', 'RX3_rsrp']
-      ];
 
-        for (const match of dataMatches) {
-        // Check if each value is defined before displaying
-        if (match && match.length === 10) {
-          // Insert a new row
-          var newRow = outputTable.insertRow(rowNum);
+      for (const logMatch of logMatches) {
+        // Get the matched time
+        var startTime = logMatch ? logMatch[1] : 'N/A';
 
-          // Insert cells into the new row
-                newRow.insertCell(0).textContent = startTime;
-                newRow.insertCell(1).textContent = match[1] ? match[1] : 'N/A';
-                newRow.insertCell(2).textContent = match[2] ? match[2] + ' dBm' : 'N/A';
-                newRow.insertCell(3).textContent = match[3] ? match[3] + ' dB' : 'N/A';
-                newRow.insertCell(4).textContent = match[4] ? match[4] + ' dBm' : 'N/A';
-                newRow.insertCell(5).textContent = match[5] ? match[5] + ' dB' : 'N/A';
-                newRow.insertCell(6).textContent = match[6] ? match[6] + ' dBm' : 'N/A';
-                newRow.insertCell(7).textContent = match[7] ? match[7] + ' dBm' : 'N/A';
-                newRow.insertCell(8).textContent = match[8] ? match[8] + ' dBm' : 'N/A';
-                newRow.insertCell(9).textContent = match[9] ? match[9] + ' dBm' : 'N/A';
+        // Extract data from the log section
+        var dataMatches = logMatch[0].matchAll(dataRegex);
 
-          rowNum++;
+        // Iterate over data matches
+        for (const dataMatch of dataMatches) {
+          // Check if each value is defined before displaying
+          if (dataMatch && dataMatch.length === 10) {
+            // Insert a new row
+            var newRow = outputTable.insertRow(rowNum);
 
-          // Push row data to the array for Excel export
-                data.push([startTime, match[1], match[2] + ' dBm', match[3] + ' dB', match[4] + ' dBm', match[5] + ' dB', match[6] + ' dBm', match[7] + ' dBm', match[8] + ' dBm', match[9] + ' dBm']);
+            // Insert cells into the new row
+            newRow.insertCell(0).textContent = startTime;
+            newRow.insertCell(1).textContent = dataMatch[1] ? dataMatch[1] : 'N/A';
+            newRow.insertCell(2).textContent = dataMatch[2] ? dataMatch[2] + ' dBm' : 'N/A';
+            newRow.insertCell(3).textContent = dataMatch[3] ? dataMatch[3] + ' dB' : 'N/A';
+            newRow.insertCell(4).textContent = dataMatch[4] ? dataMatch[4] + ' dBm' : 'N/A';
+            newRow.insertCell(5).textContent = dataMatch[5] ? dataMatch[5] + ' dB' : 'N/A';
+            newRow.insertCell(6).textContent = dataMatch[6] ? dataMatch[6] + ' dBm' : 'N/A';
+            newRow.insertCell(7).textContent = dataMatch[7] ? dataMatch[7] + ' dBm' : 'N/A';
+            newRow.insertCell(8).textContent = dataMatch[8] ? dataMatch[8] + ' dBm' : 'N/A';
+            newRow.insertCell(9).textContent = dataMatch[9] ? dataMatch[9] + ' dBm' : 'N/A';
+
+            rowNum++;
+
+            // Push row data to the array for Excel export
+            data.push([
+              startTime,
+              dataMatch[1],
+              dataMatch[2] + ' dBm',
+              dataMatch[3] + ' dB',
+              dataMatch[4] + ' dBm',
+              dataMatch[5] + ' dB',
+              dataMatch[6] + ' dBm',
+              dataMatch[7] + ' dBm',
+              dataMatch[8] + ' dBm',
+              dataMatch[9] + ' dBm'
+            ]);
+          }
         }
-
-        // Display debug information in console
-        console.log('Debug: ', match);
       }
 
       // Export data to Excel immediately after parsing
@@ -135,7 +147,7 @@
   <ul>
     <li><strong>【How to use】</strong>
       <ul>
-	  	<li>Please post the files generated by the 5 great tools below (for example: 20240112-134449_A_UE1.log)</li>
+        <li>Please post the files generated by the 5 great tools below (for example: 20240112-134449_A_UE1.log)</li>
         <textarea id="logInput" rows="10" cols="80"></textarea>
         <br>
         <button onclick="parseLog()">Parse and Export to Excel</button>
@@ -149,4 +161,3 @@
 </body>
 
 </html>
-
